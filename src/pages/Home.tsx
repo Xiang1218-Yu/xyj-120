@@ -11,7 +11,8 @@ import {
   ChevronRight,
   Flame,
   Droplets,
-  HeartPulse
+  HeartPulse,
+  Gamepad2
 } from 'lucide-react'
 import { api } from '@/lib/api'
 import type { KnowledgeItem, Equipment, CommunityPost } from '@/types'
@@ -37,6 +38,13 @@ const features = [
     description: '按场景生成采购清单，优先级标注，再也不会漏买',
     path: '/checklist',
     color: 'from-green-500 to-emerald-500'
+  },
+  {
+    icon: Gamepad2,
+    title: '生存模拟器',
+    description: '沉浸式场景模拟，考验你的生存决策，获取专业评估和改进建议',
+    path: '/simulator',
+    color: 'from-amber-500 to-orange-500'
   },
   {
     icon: Users,
@@ -175,7 +183,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <section className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
         {features.map((feature, index) => {
           const Icon = feature.icon
           return (

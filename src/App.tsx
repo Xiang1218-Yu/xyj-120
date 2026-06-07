@@ -8,6 +8,7 @@ import EquipmentDetail from "@/pages/EquipmentDetail";
 import Checklist from "@/pages/Checklist";
 import Community from "@/pages/Community";
 import CommunityDetail from "@/pages/CommunityDetail";
+import Simulator from "@/pages/Simulator";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/checklist" element={<Checklist />} />
           <Route path="/community" element={<Community />} />
           <Route path="/community/:id" element={<CommunityDetail />} />
+          <Route path="/simulator" element={<Simulator />} />
         </Routes>
       </Layout>
     </Router>

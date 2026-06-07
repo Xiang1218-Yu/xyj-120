@@ -131,4 +131,26 @@ export const api = {
     method: 'POST',
     body: JSON.stringify({ text }),
   }),
+
+  simulator: {
+    scenarios: (params?: {
+      scenario?: string
+      difficulty?: string
+    }) => {
+      const query = params ? `?${new URLSearchParams(params as Record<string, string>).toString()}` : ''
+      return request('/simulator/scenarios' + query)
+    },
+    getScenario: (id: string) => request(`/simulator/scenarios/${id}`),
+    getQuestions: (scenarioId: string) => request(`/simulator/scenarios/${scenarioId}/questions`),
+    submit: (submission: {
+      scenarioId: string
+      answers: {
+        questionId: string
+        optionId: string
+      }[]
+    }) => request('/simulator/submit', {
+      method: 'POST',
+      body: JSON.stringify(submission),
+    }),
+  },
 }

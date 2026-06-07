@@ -129,6 +129,71 @@ export interface Comment {
   createdAt: string
 }
 
+export interface SimulatorScenario {
+  id: string
+  name: string
+  description: string
+  scenario: SurvivalScenario
+  difficulty: DifficultyLevel
+  duration: string
+  icon: string
+  imageUrl: string
+  totalQuestions: number
+}
+
+export interface SimulatorQuestion {
+  id: string
+  scenarioId: string
+  order: number
+  situation: string
+  question: string
+  options: SimulatorOption[]
+  hint?: string
+}
+
+export interface SimulatorOption {
+  id: string
+  text: string
+  score: number
+  feedback: string
+  improvement?: string
+  consequences: string
+}
+
+export interface SimulatorSubmission {
+  scenarioId: string
+  answers: {
+    questionId: string
+    optionId: string
+  }[]
+}
+
+export interface SimulatorAnswerResult {
+  questionId: string
+  userOptionId: string
+  bestOptionId: string
+  score: number
+  maxScore: number
+  feedback: string
+  improvement?: string
+  userChoice: string
+  bestChoice: string
+  consequences: string
+}
+
+export interface SimulatorResult {
+  scenarioId: string
+  scenarioName: string
+  totalScore: number
+  maxScore: number
+  percentage: number
+  grade: 'S' | 'A' | 'B' | 'C' | 'D' | 'F'
+  survivalRating: string
+  answers: SimulatorAnswerResult[]
+  overallFeedback: string
+  improvementTips: string[]
+}
+
 export interface ApiResponse<T> {
   success: boolean
   data?: T
