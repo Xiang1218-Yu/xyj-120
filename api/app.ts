@@ -12,6 +12,11 @@ import path from 'path'
 import dotenv from 'dotenv'
 import { fileURLToPath } from 'url'
 import authRoutes from './routes/auth.js'
+import knowledgeRoutes from './routes/knowledge.js'
+import equipmentRoutes from './routes/equipment.js'
+import checklistRoutes from './routes/checklist.js'
+import communityRoutes from './routes/community.js'
+import { checkSensitiveContent } from './middleware/sensitiveFilter.js'
 
 // for esm mode
 const __filename = fileURLToPath(import.meta.url)
@@ -30,6 +35,15 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }))
  * API Routes
  */
 app.use('/api/auth', authRoutes)
+app.use('/api/knowledge', knowledgeRoutes)
+app.use('/api/equipment', equipmentRoutes)
+app.use('/api/checklist', checklistRoutes)
+app.use('/api/community', communityRoutes)
+
+/**
+ * Sensitive content check endpoint
+ */
+app.post('/api/sensitive-check', checkSensitiveContent)
 
 /**
  * health
