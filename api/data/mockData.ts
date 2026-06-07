@@ -7,7 +7,9 @@ import type {
   CommunityPost,
   Comment,
   SimulatorScenario,
-  SimulatorQuestion
+  SimulatorQuestion,
+  ExchangeItem,
+  ExchangeRequest
 } from '../../src/types'
 
 export const sensitiveWords = [
@@ -1941,5 +1943,245 @@ export const simulatorQuestions: SimulatorQuestion[] = [
       }
     ],
     hint: '急救结束后，要做好交接工作，提供准确的信息。'
+  }
+]
+
+export const exchangeItems: ExchangeItem[] = [
+  {
+    id: 'ex1',
+    type: 'skill',
+    userId: 'u1',
+    userName: '野外生存达人',
+    userAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=survival',
+    title: '教授野外取火和水源净化技能',
+    description: '本人有10年野外生存经验，精通各种取火方法（钻木取火、火石取火、凸透镜取火等），以及野外寻找和净化水源的专业技能。可以教授理论知识和实际操作。',
+    category: '野外生存',
+    images: [
+      'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=bushcraft%20fire%20making%20survival%20skill%20teaching&image_size=square_hd'
+    ],
+    experienceLevel: 'advanced',
+    location: '北京',
+    exchangePreference: '希望交换急救医疗知识或户外装备',
+    availability: '周末全天，工作日晚上',
+    tags: ['取火', '水源净化', '野外生存', '技能教学'],
+    views: 245,
+    requests: 8,
+    status: 'open',
+    createdAt: '2024-05-10 14:30'
+  },
+  {
+    id: 'ex2',
+    type: 'equipment',
+    userId: 'u2',
+    userName: '装备升级中',
+    userAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=gear',
+    title: '9成新专业急救包（200件）交换',
+    description: '闲置的专业急救包，包含200件急救用品，之前徒步用的，现在装备升级换下来的。物品齐全，有效期都在保质期内。',
+    category: '急救医疗',
+    images: [
+      'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=first%20aid%20kit%20medical%20supplies%20exchange&image_size=square_hd'
+    ],
+    condition: 'excellent',
+    location: '上海',
+    exchangePreference: '想换一个好点的登山包或净水器',
+    availability: '工作日下班后可面交',
+    tags: ['急救包', '医疗用品', '急救医疗', '装备交换'],
+    views: 178,
+    requests: 5,
+    status: 'open',
+    createdAt: '2024-05-15 09:20'
+  },
+  {
+    id: 'ex3',
+    type: 'skill',
+    userId: 'u3',
+    userName: '急救培训师',
+    userAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=firstaid',
+    title: '专业急救和CPR培训',
+    description: '持证急救培训师，可提供专业的急救培训，包括CPR心肺复苏、外伤处理、骨折固定、中暑冻伤处理等。有完整的培训教具。',
+    category: '急救医疗',
+    images: [
+      'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=CPR%20first%20aid%20training%20medical%20course&image_size=square_hd'
+    ],
+    experienceLevel: 'advanced',
+    location: '广州',
+    exchangePreference: '交换野外生存技能或导航知识',
+    availability: '需提前预约',
+    tags: ['急救', 'CPR', '医疗培训', '技能交换'],
+    views: 312,
+    requests: 12,
+    status: 'open',
+    createdAt: '2024-05-18 16:45'
+  },
+  {
+    id: 'ex4',
+    type: 'equipment',
+    userId: 'u4',
+    userName: '徒步爱好者',
+    userAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=hiker',
+    title: '9成新镁棒打火石套装',
+    description: '之前买的打火石套装，现在装备升级换了更好的。用过几次，功能完好，可产生3000℃高温火花。',
+    category: '取火工具',
+    images: [
+      'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=magnesium%20fire%20starter%20flint%20rod%20bushcraft%20tool&image_size=square_hd'
+    ],
+    condition: 'good',
+    location: '深圳',
+    exchangePreference: '想换一把好的生存刀或多功能工具',
+    availability: '周末可约面交',
+    tags: ['打火石', '取火工具', '野外生存', '装备交换'],
+    views: 156,
+    requests: 4,
+    status: 'open',
+    createdAt: '2024-05-17 11:30'
+  },
+  {
+    id: 'ex5',
+    type: 'skill',
+    userId: 'u5',
+    userName: '导航专家',
+    userAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=navigator',
+    title: '地图与指南针导航教学',
+    description: '精通地形图阅读、指南针使用、地形定位、导航定位、自然导航（太阳、星星、植物辨向）等。可以教授理论和实践。',
+    category: '野外生存',
+    images: [
+      'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=map%20compass%20navigation%20orienteering%20survival%20skill&image_size=square_hd'
+    ],
+    experienceLevel: 'advanced',
+    location: '成都',
+    exchangePreference: '交换取火技能或急救培训',
+    availability: '周末可安排户外实践教学',
+    tags: ['导航', '地图', '指南针', '野外生存'],
+    views: 189,
+    requests: 6,
+    status: 'open',
+    createdAt: '2024-05-20 11:15'
+  },
+  {
+    id: 'ex6',
+    type: 'equipment',
+    userId: 'u6',
+    userName: '露营装备控',
+    userAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=camping',
+    title: '双人专业帐篷（3季）交换',
+    description: '购买了新款帐篷，旧的处理。这款帐篷是牧高笛的冷山2，3季帐，使用了5次左右，功能完好，无破损。',
+    category: '户外装备',
+    images: [
+      'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=camping%20tent%20outdoor%20gear%20hiking%20equipment&image_size=square_hd'
+    ],
+    condition: 'good',
+    location: '杭州',
+    exchangePreference: '想换一个质量好的睡袋或者炉具',
+    availability: '周末可约',
+    tags: ['帐篷', '露营', '户外装备', '装备交换'],
+    views: 267,
+    requests: 9,
+    status: 'open',
+    createdAt: '2024-05-22 14:00'
+  },
+  {
+    id: 'ex7',
+    type: 'skill',
+    userId: 'u7',
+    userName: '植物学家',
+    userAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=botanist',
+    title: '野外可食用植物识别教学',
+    description: '植物学专业背景，可教授常见的可食用野生植物识别、常见有毒植物鉴别、野菜采摘和食用方法。',
+    category: '野外生存',
+    images: [
+      'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=wild%20edible%20plants%20foraging%20botany%20survival&image_size=square_hd'
+    ],
+    experienceLevel: 'intermediate',
+    location: '昆明',
+    exchangePreference: '希望交换搭建庇护所的技能或工具',
+    availability: '季节合适时可组织野外实践',
+    tags: ['植物识别', '可食用植物', '野外生存', '觅食'],
+    views: 356,
+    requests: 15,
+    status: 'open',
+    createdAt: '2024-05-25 09:30'
+  },
+  {
+    id: 'ex8',
+    type: 'equipment',
+    userId: 'u8',
+    userName: '预备者小明',
+    userAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=prepper',
+    title: '全新手摇发电收音机',
+    description: '全新未拆封的手摇发电收音机，同时支持太阳能和USB充电，具备手电筒、警报功能。多一台，想换其他应急装备。',
+    category: '通讯设备',
+    images: [
+      'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=hand%20crank%20radio%20emergency%20survival%20gear&image_size=square_hd'
+    ],
+    condition: 'new',
+    location: '武汉',
+    exchangePreference: '换大容量充电宝或多功能工具',
+    availability: '随时可约',
+    tags: ['收音机', '应急装备', '通讯设备', '装备交换'],
+    views: 145,
+    requests: 7,
+    status: 'open',
+    createdAt: '2024-05-28 16:20'
+  },
+  {
+    id: 'ex9',
+    type: 'skill',
+    userId: 'u9',
+    userName: '绳索达人',
+    userAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=climber',
+    title: '绳结和绳索技术教学',
+    description: '攀岩爱好者，精通各种实用绳结打法、绳索捆绑技术、简单的攀岩和速降基础。可以教学。',
+    category: '野外生存',
+    images: [
+      'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=rope%20knots%20climbing%20knot%20tying%20outdoor%20skill&image_size=square_hd'
+    ],
+    experienceLevel: 'intermediate',
+    location: '深圳',
+    exchangePreference: '交换植物识别知识或急救培训',
+    availability: '周末有时间',
+    tags: ['绳结', '绳索技术', '攀岩', '野外生存'],
+    views: 223,
+    requests: 8,
+    status: 'open',
+    createdAt: '2024-06-01 10:45'
+  }
+]
+
+export const exchangeRequests: ExchangeRequest[] = [
+  {
+    id: 'er1',
+    exchangeItemId: 'ex1',
+    requesterId: 'u10',
+    requesterName: '想学生存的小白',
+    requesterAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=student1',
+    contactInfo: '微信: xiaobai123',
+    message: '非常想学野外取火技能，我可以教你摄影技巧作为交换。周末都有时间。',
+    offerDetails: '可以教授人像摄影、风光摄影后期处理，或者带你去户外实践摄影。',
+    status: 'pending',
+    createdAt: '2024-05-12 10:30'
+  },
+  {
+    id: 'er2',
+    exchangeItemId: 'ex1',
+    requesterId: 'u11',
+    requesterName: '急救员小王',
+    requesterAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=medic',
+    contactInfo: '电话: 138****5678',
+    message: '你好，我是急救员，可以教你急救知识，想学习取火技能。',
+    offerDetails: '提供完整的急救培训，包括CPR和外伤处理。',
+    status: 'accepted',
+    createdAt: '2024-05-13 15:20'
+  },
+  {
+    id: 'er3',
+    exchangeItemId: 'ex2',
+    requesterId: 'u12',
+    requesterName: '背包客小李',
+    requesterAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=backpacker',
+    contactInfo: '微信: backpacker_li',
+    message: '我有一个9成新的40L登山包，可以交换你的急救包。',
+    offerDetails: '登山包是 osprey 的，购买不到一年，保养很好。',
+    status: 'pending',
+    createdAt: '2024-05-16 09:45'
   }
 ]

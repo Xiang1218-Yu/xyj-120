@@ -194,6 +194,45 @@ export interface SimulatorResult {
   improvementTips: string[]
 }
 
+export type ExchangeItemType = 'skill' | 'equipment'
+
+export type ExchangeStatus = 'open' | 'pending' | 'completed' | 'cancelled'
+
+export interface ExchangeItem {
+  id: string
+  type: ExchangeItemType
+  userId: string
+  userName: string
+  userAvatar: string
+  title: string
+  description: string
+  category: string
+  images: string[]
+  condition?: 'new' | 'excellent' | 'good' | 'fair' | 'poor'
+  experienceLevel?: DifficultyLevel
+  location?: string
+  exchangePreference: string
+  availability: string
+  tags: string[]
+  views: number
+  requests: number
+  status: ExchangeStatus
+  createdAt: string
+}
+
+export interface ExchangeRequest {
+  id: string
+  exchangeItemId: string
+  requesterId: string
+  requesterName: string
+  requesterAvatar: string
+  contactInfo: string
+  message: string
+  offerDetails: string
+  status: 'pending' | 'accepted' | 'rejected' | 'completed'
+  createdAt: string
+}
+
 export interface ApiResponse<T> {
   success: boolean
   data?: T

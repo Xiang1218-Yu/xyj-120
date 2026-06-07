@@ -10,7 +10,8 @@ import {
   X,
   Shield,
   AlertTriangle,
-  Gamepad2
+  Gamepad2,
+  ArrowLeftRight
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -20,6 +21,7 @@ const navItems = [
   { path: '/equipment', label: '装备库', icon: Backpack },
   { path: '/checklist', label: '生存清单', icon: ClipboardList },
   { path: '/simulator', label: '生存模拟器', icon: Gamepad2 },
+  { path: '/exchange', label: '技能装备交换', icon: ArrowLeftRight },
   { path: '/community', label: '社区', icon: Users },
 ]
 

@@ -153,4 +153,59 @@ export const api = {
       body: JSON.stringify(submission),
     }),
   },
+
+  exchange: {
+    list: (params?: {
+      type?: string
+      category?: string
+      location?: string
+      search?: string
+      sortBy?: string
+      status?: string
+    }) => {
+      const query = params ? `?${new URLSearchParams(params as Record<string, string>).toString()}` : ''
+      return request('/exchange' + query)
+    },
+    categories: (params?: { type?: string }) => {
+      const query = params ? `?${new URLSearchParams(params as Record<string, string>).toString()}` : ''
+      return request('/exchange/categories' + query)
+    },
+    locations: () => request('/exchange/locations'),
+    get: (id: string) => request(`/exchange/${id}`),
+    create: (item: {
+      type: 'skill' | 'equipment'
+      userName: string
+      title: string
+      description: string
+      category: string
+      images?: string[]
+      condition?: 'new' | 'excellent' | 'good' | 'fair' | 'poor'
+      experienceLevel?: 'beginner' | 'intermediate' | 'advanced'
+      location?: string
+      exchangePreference: string
+      availability: string
+      tags?: string[]
+    }) => request('/exchange', {
+      method: 'POST',
+      body: JSON.stringify(item),
+    }),
+    sendRequest: (id: string, requestData: {
+      requesterName: string
+      contactInfo: string
+      message: string
+      offerDetails: string
+    }) => request(`/exchange/${id}/request`, {
+      method: 'POST',
+      body: JSON.stringify(requestData),
+    }),
+    getRequests: (id: string) => request(`/exchange/${id}/requests`),
+    updateStatus: (id: string, status: string) => request(`/exchange/${id}/status`, {
+      method: 'PUT',
+      body: JSON.stringify({ status }),
+    }),
+    updateRequestStatus: (requestId: string, status: string) => request(`/exchange/requests/${requestId}/status`, {
+      method: 'PUT',
+      body: JSON.stringify({ status }),
+    }),
+  },
 }

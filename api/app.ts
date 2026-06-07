@@ -17,6 +17,7 @@ import equipmentRoutes from './routes/equipment.js'
 import checklistRoutes from './routes/checklist.js'
 import communityRoutes from './routes/community.js'
 import simulatorRoutes from './routes/simulator.js'
+import exchangeRoutes from './routes/exchange.js'
 import { checkSensitiveContent } from './middleware/sensitiveFilter.js'
 
 // for esm mode
@@ -41,6 +42,7 @@ app.use('/api/equipment', equipmentRoutes)
 app.use('/api/checklist', checklistRoutes)
 app.use('/api/community', communityRoutes)
 app.use('/api/simulator', simulatorRoutes)
+app.use('/api/exchange', exchangeRoutes)
 
 /**
  * Sensitive content check endpoint

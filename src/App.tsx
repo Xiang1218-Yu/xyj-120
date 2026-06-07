@@ -9,6 +9,8 @@ import Checklist from "@/pages/Checklist";
 import Community from "@/pages/Community";
 import CommunityDetail from "@/pages/CommunityDetail";
 import Simulator from "@/pages/Simulator";
+import Exchange from "@/pages/Exchange";
+import ExchangeDetail from "@/pages/ExchangeDetail";
 
 export default function App() {
   return (
@@ -24,6 +26,8 @@ export default function App() {
           <Route path="/community" element={<Community />} />
           <Route path="/community/:id" element={<CommunityDetail />} />
           <Route path="/simulator" element={<Simulator />} />
+          <Route path="/exchange" element={<Exchange />} />
+          <Route path="/exchange/:id" element={<ExchangeDetail />} />
         </Routes>
       </Layout>
     </Router>
