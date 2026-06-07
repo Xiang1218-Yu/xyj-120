@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { 
   BookOpen, 
@@ -12,8 +13,8 @@ import {
   Droplets,
   HeartPulse
 } from 'lucide-react'
+import { api } from '@/lib/api'
 import type { KnowledgeItem, Equipment, CommunityPost } from '@/types'
-import { knowledgeItems, equipments, communityPosts } from '../../api/data/mockData'
 
 const features = [
   {
@@ -77,9 +78,44 @@ const levelNames: Record<string, string> = {
 }
 
 export default function Home() {
+  const [knowledgeItems, setKnowledgeItems] = useState<KnowledgeItem[]>([])
+  const [equipments, setEquipments] = useState<Equipment[]>([])
+  const [communityPosts, setCommunityPosts] = useState<CommunityPost[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    loadData()
+  }, [])
+
+  async function loadData() {
+    try {
+      const [knowledgeData, equipmentData, communityData] = await Promise.all([
+        api.knowledge.list(),
+        api.equipment.list(),
+        api.community.list({ sortBy: 'emergency' })
+      ])
+      setKnowledgeItems(knowledgeData as KnowledgeItem[])
+      setEquipments(equipmentData as Equipment[])
+      setCommunityPosts(communityData as CommunityPost[])
+    } catch (error) {
+      console.error('Failed to load home data:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   const featuredKnowledge = knowledgeItems.slice(0, 3)
   const featuredEquipment = equipments.slice(0, 3)
   const emergencyPost = communityPosts.find(p => p.isEmergency)
+
+  if (loading) {
+    return (
+      <div className="text-center py-20 text-slate-400">
+        <div className="w-12 h-12 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+        <p>加载中...</p>
+      </div>
+    )
+  }
 
   return (
     <div className="space-y-12">
