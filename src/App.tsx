@@ -5,6 +5,7 @@ import Knowledge from "@/pages/Knowledge";
 import KnowledgeDetail from "@/pages/KnowledgeDetail";
 import Equipment from "@/pages/Equipment";
 import EquipmentDetail from "@/pages/EquipmentDetail";
+import EquipmentCompare from "@/pages/EquipmentCompare";
 import Checklist from "@/pages/Checklist";
 import Community from "@/pages/Community";
 import CommunityDetail from "@/pages/CommunityDetail";
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/knowledge" element={<Knowledge />} />
           <Route path="/knowledge/:id" element={<KnowledgeDetail />} />
           <Route path="/equipment" element={<Equipment />} />
+          <Route path="/equipment/compare" element={<EquipmentCompare />} />
           <Route path="/equipment/:id" element={<EquipmentDetail />} />
           <Route path="/checklist" element={<Checklist />} />
           <Route path="/community" element={<Community />} />
